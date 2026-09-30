@@ -1,3 +1,31 @@
+import {
+  auth,
+  db,
+  storage
+} from "./firebase-init.js";
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+console.log("Capoeira Performance v1.0.1");
+console.log("Firebase conectado:", db);
+
 const addExerciseBtn = document.getElementById("addExerciseBtn");
 const exerciseList = document.getElementById("exerciseList");
 
