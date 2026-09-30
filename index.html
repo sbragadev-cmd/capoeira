@@ -1,131 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#111827" />
-  <meta name="description" content="Treinos de força, potência e agilidade para capoeira." />
-  <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="icon" href="./icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-  <link rel="stylesheet" href="src/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Capoeira Performance</title>
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div>
-        <p class="eyebrow">CAPOEIRA PERFORMANCE</p>
-        <h1>Treino com propósito</h1>
+      <div class="brand">
+        <div class="brand-icon">🪘</div>
+        <div>
+          <small>CAPOEIRA PERFORMANCE</small>
+          <h1>Treino com propósito</h1>
+        </div>
       </div>
-      <span class="version" id="appVersion">v1.0.0</span>
+
+      <div class="version-badge">v1.0.0</div>
     </header>
 
-    <main>
-      <section class="view active" data-view="inicio">
-        <div class="stack">
-          <article class="hero card">
-            <div>
-              <span class="pill">Treino de hoje</span>
-              <h2>Potência + Pernas</h2>
-              <p id="heroProgressText">0 de 0 exercícios concluídos</p>
-            </div>
-            <div class="ring" id="workoutRing"><strong id="workoutPercent">0%</strong></div>
-            <button class="primary" data-go="treino">Iniciar treino</button>
-          </article>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="chip">Treino de hoje</span>
+        <h2>Potência + Pernas</h2>
+        <p>
+          Desenvolva força, explosão, estabilidade e agilidade para melhorar seu desempenho na capoeira.
+        </p>
 
-          <div class="grid two">
-            <article class="card metric-card">
-              <span>Meta semanal</span>
-              <strong>3 / 4</strong>
-              <div class="progress"><span style="width:75%"></span></div>
-            </article>
-            <article class="card metric-card">
-              <span>Peso atual</span>
-              <strong id="weightValue">82,0 kg</strong>
-              <label>Peso (kg)<input id="weightInput" type="number" min="20" max="300" step="0.1" value="82" /></label>
-            </article>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span>Exercícios concluídos</span>
+            <strong id="doneCount">0 / 0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Progresso</span>
+            <strong id="progressPercent">0%</strong>
+          </div>
+          <div class="stat-card">
+            <span>Meta semanal</span>
+            <strong>3 / 4</strong>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary">Iniciar treino</button>
+          <button class="btn btn-secondary">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/treino-banner.png" alt="Capoeirista em posição de treino" />
+      </div>
+    </section>
+
+    <main class="dashboard-grid">
+      <section class="card">
+        <div class="card-header">
+          <h3>⚖️ Peso atual</h3>
+        </div>
+        <div class="weight-row">
+          <div class="weight-display">
+            <span>Atual</span>
+            <strong>82,0 kg</strong>
+          </div>
+          <div class="field-group">
+            <label for="peso">Novo peso (kg)</label>
+            <input id="peso" type="number" step="0.1" placeholder="Ex.: 81.5" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h3>🍽️ Alimentação de hoje</h3>
+        </div>
+
+        <div class="nutrition-summary">
+          <div class="mini-stat">
+            <span>Calorias</span>
+            <strong>1840 / 2500 kcal</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Proteína</span>
+            <strong>124 / 160 g</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Água</span>
+            <strong>2.1 / 3.0 L</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-full">Abrir alimentação</button>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h3>🏆 Desafios</h3>
+        </div>
+        <div class="challenge-list">
+          <div class="challenge-item">
+            <span>30 dias de mobilidade</span>
+            <strong>9 / 30 dias</strong>
+          </div>
+          <div class="challenge-item">
+            <span>Meta de água</span>
+            <strong>5 / 7 dias</strong>
+          </div>
+          <div class="challenge-item">
+            <span>Sequência ativa</span>
+            <strong>12 dias</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full-width">
+        <div class="card-header">
+          <h3>🥋 TREINO A — Potência + Pernas</h3>
+        </div>
+
+        <div class="exercise-form">
+          <div class="field-group">
+            <label for="exerciseName">Exercício</label>
+            <input id="exerciseName" type="text" placeholder="Ex.: Levantamento terra" />
           </div>
 
-          <article class="card">
-            <div class="section-head"><h3>Alimentação de hoje</h3><button class="ghost" data-go="alimentacao">Abrir</button></div>
-            <div class="nutrition-row"><span>Calorias</span><b id="homeCalories">1840 / 2500 kcal</b></div>
-            <div class="progress"><span id="homeCaloriesBar"></span></div>
-            <div class="nutrition-row"><span>Proteína</span><b id="homeProtein">124 / 160 g</b></div>
-            <div class="progress"><span id="homeProteinBar"></span></div>
+          <div class="field-group">
+            <label for="exerciseCategory">Categoria</label>
+            <select id="exerciseCategory">
+              <option>Força</option>
+              <option>Potência</option>
+              <option>Agilidade</option>
+              <option>Mobilidade</option>
+              <option>Core</option>
+              <option>Condicionamento</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="series">Séries</label>
+            <input id="series" type="number" value="3" />
+          </div>
+
+          <div class="field-group">
+            <label for="reps">Repetições</label>
+            <input id="reps" type="number" value="8" />
+          </div>
+
+          <div class="field-group">
+            <label for="load">Carga (kg)</label>
+            <input id="load" type="number" value="0" />
+          </div>
+
+          <div class="field-group action-group">
+            <button class="btn btn-primary" id="addExerciseBtn">Adicionar ao treino</button>
+          </div>
+        </div>
+
+        <div class="exercise-list" id="exerciseList">
+          <article class="exercise-card">
+            <div class="exercise-media">
+              <img src="assets/squat-capoeira.png" alt="Capoeirista executando agachamento" />
+            </div>
+            <div class="exercise-info">
+              <div class="exercise-top">
+                <span class="exercise-tag">Força</span>
+                <span class="exercise-status">Pendente</span>
+              </div>
+              <h4>Agachamento livre</h4>
+              <p>4 séries • 6 repetições • 80 kg</p>
+              <div class="exercise-actions">
+                <button class="btn btn-secondary btn-small">Concluir</button>
+                <button class="btn btn-danger btn-small">Remover</button>
+              </div>
+            </div>
           </article>
 
-          <article class="card">
-            <div class="section-head"><h3>Desafios</h3><span class="muted">sequência ativa</span></div>
-            <div class="challenge"><div><b>30 dias de mobilidade</b><span>9/30 dias</span></div><div class="progress"><span style="width:30%"></span></div></div>
-            <div class="challenge"><div><b>Meta de água</b><span>5/7 dias</span></div><div class="progress"><span style="width:71%"></span></div></div>
+          <article class="exercise-card">
+            <div class="exercise-media">
+              <img src="assets/jump-capoeira.png" alt="Capoeirista executando salto pliométrico" />
+            </div>
+            <div class="exercise-info">
+              <div class="exercise-top">
+                <span class="exercise-tag">Potência</span>
+                <span class="exercise-status">Pendente</span>
+              </div>
+              <h4>Box jump</h4>
+              <p>4 séries • 5 repetições • Peso corporal</p>
+              <div class="exercise-actions">
+                <button class="btn btn-secondary btn-small">Concluir</button>
+                <button class="btn btn-danger btn-small">Remover</button>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="view" data-view="treino">
-        <div class="stack">
-          <div class="section-head"><div><p class="eyebrow">TREINO A</p><h2>Potência + Pernas</h2></div><button class="ghost" id="resetWorkout">Reiniciar</button></div>
-          <div class="progress"><span id="trainingBar"></span></div>
-          <div class="exercise-list" id="exerciseList"></div>
-
-          <form class="card form-grid" id="exerciseForm">
-            <h3>Adicionar exercício</h3>
-            <label class="wide">Exercício<input id="exerciseName" required maxlength="60" placeholder="Ex.: Levantamento terra" /></label>
-            <label>Categoria
-              <select id="exerciseGroup">
-                <option>Força</option><option>Potência</option><option>Agilidade</option><option>Mobilidade</option><option>Core</option><option>Condicionamento</option>
-              </select>
-            </label>
-            <label>Séries<input id="exerciseSets" type="number" min="1" max="20" value="3" /></label>
-            <label>Reps<input id="exerciseReps" type="number" min="1" max="100" value="8" /></label>
-            <label>Carga kg<input id="exerciseLoad" type="number" min="0" max="500" step="0.5" value="0" /></label>
-            <button class="primary wide" type="submit">Adicionar ao treino</button>
-          </form>
+      <section class="card full-width">
+        <div class="card-header">
+          <h3>📊 Metas diárias</h3>
         </div>
-      </section>
 
-      <section class="view" data-view="alimentacao">
-        <div class="stack">
-          <div><p class="eyebrow">ALIMENTAÇÃO</p><h2>Metas diárias</h2></div>
-          <form class="card form-grid" id="nutritionForm">
-            <label>Calorias consumidas<input id="calories" type="number" min="0" max="10000" /></label>
-            <label>Meta calorias<input id="caloriesTarget" type="number" min="1" max="10000" /></label>
-            <label>Proteína consumida (g)<input id="protein" type="number" min="0" max="1000" /></label>
-            <label>Meta proteína (g)<input id="proteinTarget" type="number" min="1" max="1000" /></label>
-            <label>Água consumida (L)<input id="water" type="number" min="0" max="20" step="0.1" /></label>
-            <label>Meta água (L)<input id="waterTarget" type="number" min="0.1" max="20" step="0.1" /></label>
-            <button class="primary wide" type="submit">Salvar alimentação</button>
-          </form>
-          <article class="card">
-            <h3>Resumo</h3>
-            <div class="nutrition-row"><span>Calorias</span><b id="caloriesSummary"></b></div><div class="progress"><span id="caloriesBar"></span></div>
-            <div class="nutrition-row"><span>Proteína</span><b id="proteinSummary"></b></div><div class="progress"><span id="proteinBar"></span></div>
-            <div class="nutrition-row"><span>Água</span><b id="waterSummary"></b></div><div class="progress"><span id="waterBar"></span></div>
-          </article>
-          <p class="notice">Nesta versão, a alimentação funciona como acompanhamento de metas. Dietas clínicas ou necessidades específicas devem seguir orientação profissional.</p>
+        <div class="nutrition-form">
+          <div class="field-group">
+            <label>Calorias consumidas</label>
+            <input type="number" />
+          </div>
+          <div class="field-group">
+            <label>Meta calorias</label>
+            <input type="number" />
+          </div>
+          <div class="field-group">
+            <label>Proteína consumida (g)</label>
+            <input type="number" />
+          </div>
+          <div class="field-group">
+            <label>Meta proteína (g)</label>
+            <input type="number" />
+          </div>
+          <div class="field-group">
+            <label>Água consumida (L)</label>
+            <input type="number" step="0.1" />
+          </div>
+          <div class="field-group">
+            <label>Meta água (L)</label>
+            <input type="number" step="0.1" />
+          </div>
         </div>
-      </section>
 
-      <section class="view" data-view="metas">
-        <div class="stack">
-          <div><p class="eyebrow">EVOLUÇÃO</p><h2>Metas e desafios</h2></div>
-          <div id="goalList" class="stack"></div>
+        <button class="btn btn-primary">Salvar alimentação</button>
+
+        <div class="notice">
+          Nesta versão, a alimentação funciona como acompanhamento de metas. Dietas clínicas ou necessidades específicas devem seguir orientação profissional.
         </div>
       </section>
     </main>
-
-    <nav class="bottom-nav" aria-label="Navegação principal">
-      <button class="active" data-go="inicio"><span>⌂</span>Início</button>
-      <button data-go="treino"><span>⚡</span>Treino</button>
-      <button data-go="alimentacao"><span>◉</span>Dieta</button>
-      <button data-go="metas"><span>◎</span>Metas</button>
-    </nav>
-
-    <div class="toast" id="toast" aria-live="polite"></div>
   </div>
 
-  <script src="./src/version.js"></script>
-  <script src="./src/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
