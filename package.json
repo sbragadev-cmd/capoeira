@@ -1,0 +1,11 @@
+{
+  "name": "capoeira-performance",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync:version": "node scripts/sync-version.mjs",
+    "check": "node --check src/app.js && node --check sw.js && node --check scripts/sync-version.mjs",
+    "prepare:release": "npm run sync:version && npm run check"
+  }
+}
